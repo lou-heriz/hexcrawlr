@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+svg g text {
+  font-size: 5px;
+  fill: white;
+}
+
+.adjacent {
+  fill: red;
+}
