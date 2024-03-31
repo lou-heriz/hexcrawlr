@@ -4,5 +4,8 @@ svg g text {
 }
 
 .adjacent {
-  fill: red;
+  fill: white;
+  stroke: grey;
+  stroke-width: 0.5;
+  stroke-dasharray: 1 1;
 }

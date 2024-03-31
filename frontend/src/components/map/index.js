@@ -2,7 +2,7 @@ import { HexGrid, Layout, Hexagon, Text, Pattern, Path, Hex } from 'react-hexgri
 import { useState, useEffect } from 'react';
 import _ from 'lodash';
 import { motion } from "framer-motion";
-
+import addIcon from "../../assets/AddIcon.svg";
 export default function Map() {
 
     function getWindowDimensions() {
@@ -115,7 +115,8 @@ export default function Map() {
     return (
         <HexGrid width={width} height={height} viewBox='-50 -50 100 100'>
             {/* Grid with manually inserted hexagons */}
-            <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.05} origin={{ x: 0, y: 0 }}>
+            <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.1} origin={{ x: 0, y: 0 }}>
+                <img src="./AddIcon.svg" />
                 <motion.g
                     className="container"
                     variants={container}
@@ -132,12 +133,19 @@ export default function Map() {
                     {
                         addableHexes && addableHexes.map(hex =>
                             <motion.g key={"addable-q" + hex.q + "r" + hex.r + "s" + hex.s} variants={addableItem} >
-                                <Hexagon id={"addable-q" + hex.q + "r" + hex.r + "s" + hex.s} className="adjacent" key={"addable-q" + hex.q + "r" + hex.r + "s" + hex.s} onClick={() => addHex(hex)} q={hex.q} r={hex.r} s={hex.s} />
+                                <Hexagon
+                                    id={"addable-q" + hex.q + "r" + hex.r + "s" + hex.s}
+                                    className="adjacent"
+                                    key={"addable-q" + hex.q + "r" + hex.r + "s" + hex.s}
+                                    onClick={() => addHex(hex)} q={hex.q} r={hex.r} s={hex.s}
+                                    fill="pat-1">
+                                </Hexagon>
                             </motion.g>
                         )
                     }
                 </motion.g>
             </Layout>
+            <Pattern id="pat-1" link={addIcon} size={{ x: 10, y: 9 }} />
         </HexGrid >
     )
 }
